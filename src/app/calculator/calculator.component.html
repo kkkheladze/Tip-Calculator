@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="well1">
+    <p>Bill</p>
+    <input type="number" [(ngModel)]="billAmount" min="1" onfocus="this.value=''">
+    <p>Select Tip %</p>
+    <div class="grid-container">
+      <button type="button" (click)="onTipChoose(5)" (click)="buttonClick(1)" [class.clicked]="button1">5%</button>
+      <button type="button" (click)="onTipChoose(10)" (click)="buttonClick(2)" [class.clicked]="button2">10%</button>
+      <button type="button" (click)="onTipChoose(15)" (click)="buttonClick(3)" [class.clicked]="button3">15%</button>
+      <button type="button" (click)="onTipChoose(20)" (click)="buttonClick(4)" [class.clicked]="button4">20%</button>
+      <button type="button" (click)="onTipChoose(25)" (click)="buttonClick(5)" [class.clicked]="button5">25%</button>
+      <button type="button"
+              id="customButton"
+              (click)="customTip()"
+              (click)="buttonClick(6)"
+              [class.clicked]="button6">Custom</button>
+    </div>
+    <p for="customm" *ngIf="custom" class="">Min Amount %1</p>
+    <input  id="customm" *ngIf="custom" min="1" #custom (change)="onTipChoose(custom.value)" type="number" onfocus="this.value=''">
+    <p>Number Of People</p>
+    <input type="number" [(ngModel)]="peopleAmount" min='0' onfocus="this.value=''">
+  </div>
+  <div class="well2">
+    <div class="amount">
+      <div>
+        <p class="amountLabel">Tip Amount</p>
+        <p class="typeLabel">/person</p>
+      </div>
+      <h1 class="number">${{tipAmount}}</h1>
+    </div>
+    <div class="amount">
+      <div>
+        <p class="amountLabel">Total</p>
+        <p class="typeLabel">/person</p>
+      </div>
+      <h1 class="number">${{total}}</h1>
+    </div>
+    <button (click)="onCalculate()">
+      Calculate
+    </button>
+    <button (click)="onReset()">
+      RESET
+    </button>
+</div>
+</div>
